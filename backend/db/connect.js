@@ -2,7 +2,7 @@ require('../.env')
 
 const mongoose = require('mongoose');
 
-mongoose.connect(DBURI)
+mongoose.connect(DBURIlocal)
   .then((result)=>{
     console.log('connected to database')
   })
