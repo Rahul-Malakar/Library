@@ -18,7 +18,7 @@ const app = express();
 //frontend reference
 const path = require('path')
 app.set('view engine', 'ejs');
-app.set('views', [path.join(__dirname, '..', 'frontend', 'views'),path.join(__dirname, '..', 'frontend', 'views','books'),path.join(__dirname, '..', 'frontend', 'views'),path.join(__dirname, '..', 'frontend', 'views','auth')]);
+app.set('views', [path.join(__dirname, '..', 'frontend', 'views'),path.join(__dirname, '..', 'frontend', 'views','books'),path.join(__dirname, '..', 'frontend', 'views', 'members'),path.join(__dirname, '..', 'frontend', 'views','auth')]);
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'public')));
 
 //middleware

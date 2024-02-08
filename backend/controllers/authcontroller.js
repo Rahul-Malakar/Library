@@ -1,17 +1,42 @@
+const User = require('../models/user')
+const statuscode = require('../statuscode')
+
+//handle errors
+const handleErrors = (err)=>{
+    console.log(err.message, err.code);
+    let error = {email: '', password: ''};
+
+    //validation errors
+    if(err.message.includes('User validation failed')){
+        console.log(err)
+    }
+}
+
 const signupGet = (req,res)=>{
     res.render('signup', {title:'signup'})
 }
-const signupPost = (req,res)=>{
-    res.send('new signup')
+const signupPost = async (req,res)=>{
+    const {email,password} = req.body;
+    try{
+        const user = await User.create({email,password});
+        res.status(success).json(user);
+    }
+    catch(err){
+        handleErrors(err);
+        res.status(failed).send('error, user not created');
+    }
 }
 const loginGet = (req,res)=>{
     res.render('login', {title:'login'})
 }
-const loginPost = (req,res)=>{
-    res.send('user login')
+const loginPost = async (req,res)=>{
+    try{
+
+    }
+    catch(err){
+
+    }
 }
-
-
 
 module.exports = {
     signupGet,

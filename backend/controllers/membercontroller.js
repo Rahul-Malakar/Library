@@ -1,4 +1,5 @@
 const Member = require('../models/member');
+const statuscode = require('../statuscode')
 
 const member_index = (req, res) => {
     Member.find()
@@ -18,7 +19,7 @@ const member_index = (req, res) => {
         res.render('memdetails', { member: result, title: 'These are the details' });
       })
       .catch((err) => {
-        res.status(404).render('404', { title: 'Member not found.' });
+        res.status(pageNotFound).render('404', { title: 'Member not found.' });
       });
   };
   
@@ -44,10 +45,10 @@ const member_index = (req, res) => {
     const member = await Member.findById(req.params.id);
     try{
       if(!member){
-        res.status(404).send('member not found')
+        res.status(pageNotFound).send('member not found')
       }
       else{
-        res.status(200).render('memupdate', {title:'update', member})
+        res.status(success).render('memupdate', {title:'update', member})
       }
     }
     catch{(err)=>{
