@@ -1,4 +1,5 @@
 const Book = require('../models/book');
+const statuscode = require('../statuscode')
 
 const book_index = (req, res) => {
   Book.find()
@@ -18,7 +19,7 @@ const book_details = (req, res) => {
       res.render('details', { book: result, title: `Details of book : ${result.title}` });
     })
     .catch((err) => {
-      res.status(404).render('404', { title: 'Book not found.' });
+      res.status(pageNotFound).render('404', { title: 'Book not found.' });
     });
 };
 

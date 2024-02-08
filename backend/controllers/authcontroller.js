@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const statuscode = require('../statuscode')
 
 //handle errors
 const handleErrors = (err)=>{
@@ -18,11 +19,11 @@ const signupPost = async (req,res)=>{
     const {email,password} = req.body;
     try{
         const user = await User.create({email,password});
-        res.status(201).json(user);
+        res.status(success).json(user);
     }
     catch(err){
         handleErrors(err);
-        res.status(400).send('error, user not created');
+        res.status(failed).send('error, user not created');
     }
 }
 const loginGet = (req,res)=>{
