@@ -1,14 +1,28 @@
 <nav>
     <div class="sidetitle">
       <a href="/"><h1>Library Management System</h1></a>
-      <p>Manager Panel</p>
+      <% if(user){ %>
+        <p>Welcome <%= user.email %></p>
+      <% } %>
     </div>
     <ul>
+      
       <li><a href="/">Books</a></li>
       <li><a href="/books/create">New Book</a></li>
      
       <li><a href="/members">Members</a></li>
       <li><a href="/members/add">New Member</a></li>
+
+      <% if(user){%>
+      <li><a href="/logout">Logout</a></li>
+      <% }else{ %>
+
+      <li><a href="/login">Login</a></li>
+      <li><a href="/signup">SignUp</a></li>
+
+      <% } %>
       
     </ul>
+    
   </nav>
+  
