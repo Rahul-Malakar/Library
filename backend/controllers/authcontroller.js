@@ -17,7 +17,7 @@ const handleErrors = (err)=>{
     }
 
     //duplicate
-    if(err.code===11000){
+    if(err.code===userAlreadyRegistered){
         errors.email = 'already registered';
         return errors;
     }
@@ -64,8 +64,6 @@ const signupPost = async (req,res)=>{
 }
 const loginGet = (req,res)=>{
     const notLoggedIn = req.query.notLoggedIn === 'true';
-
-  // Render your login page and pass notLoggedIn to the view
   res.render('login', {title: 'login', notLoggedIn });
 }
 const loginPost = async (req,res)=>{
