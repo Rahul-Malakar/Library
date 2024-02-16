@@ -12,15 +12,18 @@ const book_index = (req, res) => {
     });
 };
 
-const book_details = (req, res) => {
+const bookDetails = async (req, res) => {
   const id = req.params.id;
-  Book.findById(id)
-    .then((result) => {
-      res.render('details', { book: result, title: `Details of book : ${result.title}` });
-    })
-    .catch((err) => {
-      res.status(pageNotFound).render('404', { title: 'Book not found.' });
-    });
+  const book = await Book.findById(id);
+  try{
+    if(book){
+      res.status(success).render('details', { book, title: `Details of book : ${book.title}` });
+    }
+  }
+  catch(err){
+    res.status(failed)
+  }
+  
 };
 
 const book_create_get = (req, res) => {
@@ -75,7 +78,7 @@ const book_update_patch = (req, res) => {
 
 module.exports = {
   book_index,
-  book_details,
+  bookDetails,
   book_create_get,
   book_create_post,
   book_delete,
