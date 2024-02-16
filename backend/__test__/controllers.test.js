@@ -18,6 +18,7 @@ it('should send statuscode 200 when book details gained', async () => {
         status: jest.fn((x) => x),
         render: jest.fn((x) => x),
       };
+
     
   Book.findById.mockImplementationOnce(() => ({
     title: 'temptitle',
@@ -45,6 +46,7 @@ describe('book_create_post', () => {
     await book_create_post(req, res);
 
     // Assertions
+    expect(typeof req.body.pages).toBe("number");
     expect(Book).toHaveBeenCalledWith(req.body);
     expect(saveMock).toHaveBeenCalled();
     expect(res.redirect).toHaveBeenCalledWith('/books');
@@ -53,7 +55,7 @@ describe('book_create_post', () => {
   it('should handle errors when creating a book', async () => {
     const req = {
       body: {
-        title: 'Test Book', author: 'Test Author', pages: 100
+        title: 'Test Book', author: 'Test Author', pages: '100'
       },
     };
     const res = {
@@ -71,4 +73,6 @@ describe('book_create_post', () => {
     expect(Book).toHaveBeenCalledWith(req.body);
     expect(saveMock).toHaveBeenCalled();
   });
+
+
 });
