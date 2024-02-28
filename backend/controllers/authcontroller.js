@@ -16,6 +16,7 @@ const handleErrors = (err)=>{
     if(err.message === 'incorrect password'){
         errors.password = 'password is incorrect'
     }
+    
 
     //duplicate
     if(err.code===userAlreadyRegistered){
