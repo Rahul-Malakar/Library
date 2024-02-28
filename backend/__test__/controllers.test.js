@@ -13,12 +13,11 @@ it('should send statuscode 200 when book details gained', async () => {
           id: 'a1',
         },
       };
-      
       const res = {
+        
         status: jest.fn((x) => x),
         render: jest.fn((x) => x),
       };
-
     
   Book.findById.mockImplementationOnce(() => ({
     title: 'temptitle',
