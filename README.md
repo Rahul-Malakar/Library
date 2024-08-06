@@ -18,7 +18,7 @@ Live Website :
 - Clone the project
 
 ```bash
-git clone https://github.com/rahulmalakar42/Library.git
+https://github.com/Rahul-Malakar/Library.git
 ```
 ### Or
 - Download repo.
